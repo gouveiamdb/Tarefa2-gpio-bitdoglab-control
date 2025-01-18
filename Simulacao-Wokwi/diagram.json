@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "author": "Wilton L. Silva",
+    "editor": "wokwi",
+    "parts": [
+      {
+        "type": "board-pi-pico-w",
+        "id": "pico",
+        "top": -80.05,
+        "left": 13.15,
+        "attrs": { "builder": "pico-sdk" }
+      },
+      {
+        "type": "wokwi-led",
+        "id": "led1",
+        "top": -61.2,
+        "left": -101.8,
+        "attrs": { "color": "Red" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r1",
+        "top": 33.6,
+        "left": -115.75,
+        "rotate": 90,
+        "attrs": { "value": "1000" }
+      }
+    ],
+    "connections": [
+      [ "led1:C", "r1:1", "blue", [ "v0" ] ],
+      [ "pico:GND.4", "r1:2", "black", [ "h0" ] ],
+      [ "pico:GP13", "led1:A", "green", [ "h0" ] ]
+    ],
+    "dependencies": {}
+  }
