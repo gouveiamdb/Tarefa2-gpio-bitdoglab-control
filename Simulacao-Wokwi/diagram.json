@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "author": "",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -80.05,
+      "left": 13.15,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 15.6,
+      "left": -159.4,
+      "attrs": { "color": "Red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 61.85,
+      "left": -212.6,
+      "rotate": 180,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -45.6,
+      "left": 145.8,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -32.4,
+      "left": -159.4,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 3.95,
+      "left": -211.2,
+      "rotate": 180,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": -80.4,
+      "left": -159.4,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": -43.75,
+      "left": -212.6,
+      "rotate": 180,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "led1:C", "r1:1", "blue", [ "v0" ] ],
+    [ "pico:GP13", "led1:A", "green", [ "h0" ] ],
+    [ "pico:GP21", "bz1:2", "green", [ "h0" ] ],
+    [ "bz1:1", "pico:GND.6", "green", [ "v0" ] ],
+    [ "pico:GP12", "led2:A", "green", [ "h-134.4", "v-67.16", "h-19.2" ] ],
+    [ "r2:1", "led2:C", "green", [ "v0" ] ],
+    [ "pico:GP11", "led3:A", "green", [ "h-124.8", "v-105.6" ] ],
+    [ "r3:1", "led3:C", "green", [ "v0" ] ],
+    [ "r3:2", "r2:2", "green", [ "v0" ] ],
+    [ "r2:2", "r1:2", "green", [ "v0" ] ],
+    [ "r1:2", "pico:GND.4", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}

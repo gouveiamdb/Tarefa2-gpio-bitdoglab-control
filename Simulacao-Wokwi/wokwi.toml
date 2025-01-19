@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'build/Simulacao-Wokwi.uf2'
+elf = 'build/Simulacao-Wokwi.elf'
