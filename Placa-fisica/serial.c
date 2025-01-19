@@ -61,22 +61,22 @@ void turn_off_leds() {
     gpio_put(GREEN_LED, false);
 }
 
-// Rotina 6
+// Rotina 6 - aciona o buzzer por 2 segundos
 
-// Rotina 7
+// Rotina 7 - sai do modo de execução e habilitar o modo de gravação via software (reboot)
 
 
 int main() {
     stdio_init_all();  // Inicializar saída padrão (USB/Serial)
-
-    // Configure o LED vermelho como saída
-    gpio_init(LED_RED);
-    gpio_set_dir(LED_RED, GPIO_OUT);
-    gpio_put(LED_RED, 0);  // Desligar o LED inicialmente
+    init_leds();
 
     char buffer[100];  // Buffer para armazenar entradas do terminal
 
-    printf("Digite 'vermelho' para ligar o LED.\n");
+    printf("Por favor, digite:\n");
+    printf("'vermelho' = ligar LED vermelho;\n");
+    printf("'azul' = ligar LED azul;\n");
+    printf("'verde' = ligar LED verde;\n");
+    printf("'buzzer' = ligar o buzzer.\n");
 
     while (1) {
         // Esperar entrada do terminal
@@ -86,16 +86,22 @@ int main() {
 
             // Verificar se a entrada é "vermelho"
             if (strcmp(buffer, "vermelho") == 0) {
-                gpio_put(LED_RED, 1);  // Ligar o LED
-                printf("LED ligado!\n");
-            } else {
-                gpio_put(LED_RED, 0);  // Desligar o LED se a palavra não for "vermelho"
-                printf("LED desligado!\n");
+                turn_on_red();
+                printf("LED vermelho ligado!\n");
+            } else if (strcmp(buffer, "azul") == 0) {
+                turn_on_blue();
+                printf("LED azul ligado!\n");
+            } else if (strcmp(buffer, "verde") == 0) {
+                turn_on_green;
+                printf("LED verde ligado!\n");
+            } else if (strcmp(buffer, "buzzer") == 0) {
+                // chama a funcao do buzzer aqui
+                printf("Buzzer ligado!\n");
             }
         }
 
         sleep_ms(100);  // Pequeno delay para evitar sobrecarga da CPU
     }
-    
+
     return 0;
 }
