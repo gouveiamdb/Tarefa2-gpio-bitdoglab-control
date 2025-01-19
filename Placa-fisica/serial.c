@@ -76,7 +76,10 @@ int main() {
     printf("'vermelho' = ligar LED vermelho;\n");
     printf("'azul' = ligar LED azul;\n");
     printf("'verde' = ligar LED verde;\n");
-    printf("'buzzer' = ligar o buzzer.\n");
+    printf("'buzzer' = ligar o buzzer;\n");
+    printf("'on' = ligar todos os LEDs (cor branca);\n");
+    printf("'off' = desligar todos os LEDs;\n");
+    printf("'reboot' = modo de gravacao.\n");
 
     while (1) {
         // Esperar entrada do terminal
@@ -95,8 +98,16 @@ int main() {
                 turn_on_green;
                 printf("LED verde ligado!\n");
             } else if (strcmp(buffer, "buzzer") == 0) {
-                // chama a funcao do buzzer aqui
+                // *** chama a funcao do buzzer aqui ***
                 printf("Buzzer ligado!\n");
+            } else if (strcmp(buffer, "on") == 0) {
+                turn_on_leds();
+                printf("Todos LEDs ligados!\n");
+            } else if (strcmp(buffer, "off") == 0) {
+                turn_off_leds();
+                printf("Todos LEDs desligados!\n");
+            } else if (strcmp(buffer, "reboot") == 0) {
+                // ** chama a função aqui ***
             }
         }
 
