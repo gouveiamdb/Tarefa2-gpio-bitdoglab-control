@@ -62,8 +62,19 @@ void turn_off_leds() {
 }
 
 // Rotina 6 - aciona o buzzer por 2 segundos
+// Inicializar o buzzer
+void init_buzzer() {
+    gpio_init(BUZZER_PIN);
+    gpio_set_dir(BUZZER_PIN, GPIO_OUT);
+    gpio_put(BUZZER_PIN, 0);
+}
 
-// Rotina 7 - sai do modo de execução e habilitar o modo de gravação via software (reboot)
+// Acionar o buzzer por 2 segundos
+void beep_buzzer() {
+    gpio_put(BUZZER_PIN, 1);
+    sleep_ms(2000);
+    gpio_put(BUZZER_PIN, 0);
+}
 
 
 int main() {
@@ -98,7 +109,7 @@ int main() {
                 turn_on_green;
                 printf("LED verde ligado!\n");
             } else if (strcmp(buffer, "buzzer") == 0) {
-                // *** chama a funcao do buzzer aqui ***
+                beep_buzzer();
                 printf("Buzzer ligado!\n");
             } else if (strcmp(buffer, "on") == 0) {
                 turn_on_leds();
@@ -107,7 +118,7 @@ int main() {
                 turn_off_leds();
                 printf("Todos LEDs desligados!\n");
             } else if (strcmp(buffer, "reboot") == 0) {
-                // ** chama a função aqui ***
+                watchdog_reboot(0, SRAM_END, 0);
             }
         }
 
