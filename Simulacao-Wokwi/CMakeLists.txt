@@ -41,8 +41,8 @@ pico_set_program_name(Simulacao-Wokwi "Simulacao-Wokwi")
 pico_set_program_version(Simulacao-Wokwi "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(Simulacao-Wokwi 0)
-pico_enable_stdio_usb(Simulacao-Wokwi 0)
+pico_enable_stdio_uart(Simulacao-Wokwi 1)
+pico_enable_stdio_usb(Simulacao-Wokwi 1)
 
 # Add the standard library to the build
 target_link_libraries(Simulacao-Wokwi
