@@ -75,7 +75,7 @@ Para o comando `buzzer`:
 Buzzer ligado!
 ```
 ## Vídeo Explicativo
-[Assista ao vídeo explicativo clicando aqui.](https://youtu.be/8GTAyxUcUm8)
+[Assista ao vídeo explicativo clicando aqui.](https://youtu.be/4bupQjVBHUE)
 
 ## Autor
 Projeto desenvolvido por:
