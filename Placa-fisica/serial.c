@@ -97,8 +97,6 @@ int main() {
             } else if (strcmp(buffer, "off") == 0) {
                 turn_off_leds();
                 printf("Todos LEDs desligados!\n");
-            } else if (strcmp(buffer, "reboot") == 0) {
-                watchdog_reboot(0, SRAM_END, 0);
             } else {
                 printf("Comando inválido. Tente novamente.\n");
             }
