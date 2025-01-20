@@ -32,6 +32,16 @@ void processar_comando(const char *comando);
 
 
 /**
+ * @brief Simula a entrada de comandos do usuário.
+ * 
+ * A função executa automaticamente uma sequência de comandos
+ * que ativam e desativam os LEDs e o buzzer para simular
+ * o comportamento esperado do programa.
+ */
+void simular_comandos();
+
+
+/**
  * @brief Exibe a mensagem inicial com as instruções do programa.
  * 
  * Exibe as instruções para o usuário, informando os comandos disponíveis e o que cada um faz.
@@ -56,18 +66,14 @@ void desligar_todos_os_leds();
 int main() {
 
     inicializar_sistema(); ///< Inicializa o sistema.
-    exibir_mensagem_inicial(); ///< Exibe a mensagem inicial.
 
     char entrada_usuario[128];  ///< Buffer para armazenar a entrada do usuário.
 
-    while (true) {
-        if (fgets(entrada_usuario, sizeof(entrada_usuario), stdin) != NULL) {
-            entrada_usuario[strcspn(entrada_usuario, "\n")] = '\0';  ///< Remove o caractere de nova linha.
-            processar_comando(entrada_usuario);  ///< Processa o comando digitado.
-        }
+    sleep_ms(2000);  ///< Aguarda 2 segundos antes de iniciar a simulação.
 
-        sleep_ms(50);  ///< Pequeno delay para otimizar o loop.
-    }
+    printf("\n");
+    printf("\nIniciando simulação de comandos...\n");
+    simular_comandos();  ///< Realiza a simulação de comandos.
 
     return 0;
 }
@@ -134,14 +140,23 @@ void processar_comando(const char *comando) {
     }
 }
 
-void exibir_mensagem_inicial() {
-    printf("Essa simulação controla um LED e um Buzzer usando comandos digitados.\n");
-    printf("Use os seguintes comandos para interagir:\n");
-    printf("  - 'vermelho': Liga o LED vermelho.\n");
-    printf("  - 'azul': Liga o LED azul.\n");
-    printf("  - 'verde': Liga o LED verde.\n");
-    printf("  - 'branco': Liga todos os LEDs.\n");
-    printf("  - 'buzzer': Emite som no Buzzer por 2 segundos.\n");
-    printf("  - 'desligar': Desliga todos os LEDs.\n");
-    printf("Qualquer outro comando será considerado inválido e os Leds serão apagados.\n\n");
+
+void simular_comandos() {
+    const char *comandos[] = {
+        "vermelho",
+        "azul",
+        "verde",
+        "branco",
+        "buzzer",
+        "desligar",
+        "comando_invalido"
+    };
+
+    size_t numero_comandos = sizeof(comandos) / sizeof(comandos[0]);
+
+    for (size_t i = 0; i < numero_comandos; i++) {
+        printf("\nSimulando comando: %s\n", comandos[i]);
+        processar_comando(comandos[i]);
+        sleep_ms(2000);  ///< Intervalo de 2 segundo entre os comandos.
+    }
 }
