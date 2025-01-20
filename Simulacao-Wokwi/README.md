@@ -75,7 +75,7 @@ Este projeto é uma simulação educacional que utiliza o Raspberry Pi Pico para
   Buzzer desativado!
   ```
 ## Vídeo Explicativo
-[Assista ao vídeo explicativo clicando aqui.](https://youtu.be/4bupQjVBHUE)
+[Assista ao vídeo explicativo clicando aqui.](https://youtu.be/Iq800dbmF4c)
 
 ## Autores
 
